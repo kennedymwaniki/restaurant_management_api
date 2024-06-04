@@ -1,6 +1,6 @@
 import { integer, pgEnum, pgTable, serial, boolean, varchar } from 'drizzle-orm/pg-core';
 
-// Declaring enums in the database
+
 
 
 // Tables
