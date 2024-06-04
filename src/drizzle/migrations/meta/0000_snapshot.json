@@ -1,11 +1,11 @@
 {
-  "id": "a2e776b6-c3d9-46e0-a69c-ab69f19d596f",
+  "id": "267740f7-ec3a-453a-92a5-6fc813fc6dd9",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.addresses": {
-      "name": "addresses",
+    "public.address": {
+      "name": "address",
       "schema": "",
       "columns": {
         "id": {
@@ -52,22 +52,22 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "varchar(256)",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "varchar(256)",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "addresses_user_id_users_id_fk": {
-          "name": "addresses_user_id_users_id_fk",
-          "tableFrom": "addresses",
+        "address_user_id_users_id_fk": {
+          "name": "address_user_id_users_id_fk",
+          "tableFrom": "address",
           "tableTo": "users",
           "columnsFrom": [
             "user_id"
@@ -78,10 +78,10 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "addresses_city_id_cities_id_fk": {
-          "name": "addresses_city_id_cities_id_fk",
-          "tableFrom": "addresses",
-          "tableTo": "cities",
+        "address_city_id_city_id_fk": {
+          "name": "address_city_id_city_id_fk",
+          "tableFrom": "address",
+          "tableTo": "city",
           "columnsFrom": [
             "city_id"
           ],
@@ -95,8 +95,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.categories": {
-      "name": "categories",
+    "public.category": {
+      "name": "category",
       "schema": "",
       "columns": {
         "id": {
@@ -117,8 +117,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.cities": {
-      "name": "cities",
+    "public.city": {
+      "name": "city",
       "schema": "",
       "columns": {
         "id": {
@@ -142,10 +142,10 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "cities_state_id_states_id_fk": {
-          "name": "cities_state_id_states_id_fk",
-          "tableFrom": "cities",
-          "tableTo": "states",
+        "city_state_id_state_id_fk": {
+          "name": "city_state_id_state_id_fk",
+          "tableFrom": "city",
+          "tableTo": "state",
           "columnsFrom": [
             "state_id"
           ],
@@ -201,13 +201,13 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "varchar(256)",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "varchar(256)",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
         }
@@ -292,13 +292,13 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "varchar(256)",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "varchar(256)",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
         }
@@ -322,8 +322,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.menu_items": {
-      "name": "menu_items",
+    "public.menu_item": {
+      "name": "menu_item",
       "schema": "",
       "columns": {
         "id": {
@@ -376,23 +376,23 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "varchar(256)",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "varchar(256)",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "menu_items_restaurant_id_restaurants_id_fk": {
-          "name": "menu_items_restaurant_id_restaurants_id_fk",
-          "tableFrom": "menu_items",
-          "tableTo": "restaurants",
+        "menu_item_restaurant_id_restaurantTable_id_fk": {
+          "name": "menu_item_restaurant_id_restaurantTable_id_fk",
+          "tableFrom": "menu_item",
+          "tableTo": "restaurantTable",
           "columnsFrom": [
             "restaurant_id"
           ],
@@ -402,10 +402,10 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "menu_items_category_id_categories_id_fk": {
-          "name": "menu_items_category_id_categories_id_fk",
-          "tableFrom": "menu_items",
-          "tableTo": "categories",
+        "menu_item_category_id_category_id_fk": {
+          "name": "menu_item_category_id_category_id_fk",
+          "tableFrom": "menu_item",
+          "tableTo": "category",
           "columnsFrom": [
             "category_id"
           ],
@@ -419,8 +419,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.order_menu_items": {
-      "name": "order_menu_items",
+    "public.order_menu_item": {
+      "name": "order_menu_item",
       "schema": "",
       "columns": {
         "id": {
@@ -455,22 +455,22 @@
         },
         "price": {
           "name": "price",
-          "type": "varchar(256)",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
         },
         "comment": {
           "name": "comment",
-          "type": "varchar(256)",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "order_menu_items_order_id_orders_id_fk": {
-          "name": "order_menu_items_order_id_orders_id_fk",
-          "tableFrom": "order_menu_items",
+        "order_menu_item_order_id_orders_id_fk": {
+          "name": "order_menu_item_order_id_orders_id_fk",
+          "tableFrom": "order_menu_item",
           "tableTo": "orders",
           "columnsFrom": [
             "order_id"
@@ -481,10 +481,10 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "order_menu_items_menu_item_id_menu_items_id_fk": {
-          "name": "order_menu_items_menu_item_id_menu_items_id_fk",
-          "tableFrom": "order_menu_items",
-          "tableTo": "menu_items",
+        "order_menu_item_menu_item_id_menu_item_id_fk": {
+          "name": "order_menu_item_menu_item_id_menu_item_id_fk",
+          "tableFrom": "order_menu_item",
+          "tableTo": "menu_item",
           "columnsFrom": [
             "menu_item_id"
           ],
@@ -498,8 +498,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.order_statuses": {
-      "name": "order_statuses",
+    "public.order_status": {
+      "name": "order_status",
       "schema": "",
       "columns": {
         "id": {
@@ -529,9 +529,9 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "order_statuses_order_id_orders_id_fk": {
-          "name": "order_statuses_order_id_orders_id_fk",
-          "tableFrom": "order_statuses",
+        "order_status_order_id_orders_id_fk": {
+          "name": "order_status_order_id_orders_id_fk",
+          "tableFrom": "order_status",
           "tableTo": "orders",
           "columnsFrom": [
             "order_id"
@@ -542,10 +542,10 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "order_statuses_status_catalog_id_status_catalogs_id_fk": {
-          "name": "order_statuses_status_catalog_id_status_catalogs_id_fk",
-          "tableFrom": "order_statuses",
-          "tableTo": "status_catalogs",
+        "order_status_status_catalog_id_status_catalog_id_fk": {
+          "name": "order_status_status_catalog_id_status_catalog_id_fk",
+          "tableFrom": "order_status",
+          "tableTo": "status_catalog",
           "columnsFrom": [
             "status_catalog_id"
           ],
@@ -631,23 +631,23 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "varchar(256)",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "varchar(256)",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "orders_restaurant_id_restaurants_id_fk": {
-          "name": "orders_restaurant_id_restaurants_id_fk",
+        "orders_restaurant_id_restaurantTable_id_fk": {
+          "name": "orders_restaurant_id_restaurantTable_id_fk",
           "tableFrom": "orders",
-          "tableTo": "restaurants",
+          "tableTo": "restaurantTable",
           "columnsFrom": [
             "restaurant_id"
           ],
@@ -657,10 +657,10 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "orders_delivery_address_id_addresses_id_fk": {
-          "name": "orders_delivery_address_id_addresses_id_fk",
+        "orders_delivery_address_id_address_id_fk": {
+          "name": "orders_delivery_address_id_address_id_fk",
           "tableFrom": "orders",
-          "tableTo": "addresses",
+          "tableTo": "address",
           "columnsFrom": [
             "delivery_address_id"
           ],
@@ -700,8 +700,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.restaurant_owners": {
-      "name": "restaurant_owners",
+    "public.restaurant_owner": {
+      "name": "restaurant_owner",
       "schema": "",
       "columns": {
         "id": {
@@ -725,10 +725,10 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "restaurant_owners_restaurant_id_restaurants_id_fk": {
-          "name": "restaurant_owners_restaurant_id_restaurants_id_fk",
-          "tableFrom": "restaurant_owners",
-          "tableTo": "restaurants",
+        "restaurant_owner_restaurant_id_restaurantTable_id_fk": {
+          "name": "restaurant_owner_restaurant_id_restaurantTable_id_fk",
+          "tableFrom": "restaurant_owner",
+          "tableTo": "restaurantTable",
           "columnsFrom": [
             "restaurant_id"
           ],
@@ -738,9 +738,9 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "restaurant_owners_owner_id_users_id_fk": {
-          "name": "restaurant_owners_owner_id_users_id_fk",
-          "tableFrom": "restaurant_owners",
+        "restaurant_owner_owner_id_users_id_fk": {
+          "name": "restaurant_owner_owner_id_users_id_fk",
+          "tableFrom": "restaurant_owner",
           "tableTo": "users",
           "columnsFrom": [
             "owner_id"
@@ -755,8 +755,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.restaurants": {
-      "name": "restaurants",
+    "public.restaurantTable": {
+      "name": "restaurantTable",
       "schema": "",
       "columns": {
         "id": {
@@ -799,15 +799,15 @@
           "name": "updated_at",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "restaurants_city_id_cities_id_fk": {
-          "name": "restaurants_city_id_cities_id_fk",
-          "tableFrom": "restaurants",
-          "tableTo": "cities",
+        "restaurantTable_city_id_city_id_fk": {
+          "name": "restaurantTable_city_id_city_id_fk",
+          "tableFrom": "restaurantTable",
+          "tableTo": "city",
           "columnsFrom": [
             "city_id"
           ],
@@ -821,8 +821,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.states": {
-      "name": "states",
+    "public.state": {
+      "name": "state",
       "schema": "",
       "columns": {
         "id": {
@@ -849,8 +849,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.status_catalogs": {
-      "name": "status_catalogs",
+    "public.status_catalog": {
+      "name": "status_catalog",
       "schema": "",
       "columns": {
         "id": {
@@ -936,20 +936,7 @@
       "uniqueConstraints": {}
     }
   },
-  "enums": {
-    "public.order_status": {
-      "name": "order_status",
-      "schema": "public",
-      "values": [
-        "pending",
-        "accepted",
-        "preparing",
-        "on_the_way",
-        "delivered",
-        "cancelled"
-      ]
-    }
-  },
+  "enums": {},
   "schemas": {},
   "_meta": {
     "columns": {},
