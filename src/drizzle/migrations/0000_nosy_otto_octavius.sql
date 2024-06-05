@@ -102,14 +102,14 @@ CREATE TABLE IF NOT EXISTS "restaurantTable" (
 	"street_address" varchar(256),
 	"zip_code" varchar(10),
 	"city_id" integer,
-	"created_at" varchar(256),
-	"updated_at" varchar(256) NOT NULL
+	"created_at" timestamp,
+	"updated_at" timestamp NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "state" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"name" varchar(256),
-	"code" varchar(2)
+	"code" varchar(20)
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "status_catalog" (

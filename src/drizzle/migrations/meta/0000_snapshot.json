@@ -1,5 +1,5 @@
 {
-  "id": "267740f7-ec3a-453a-92a5-6fc813fc6dd9",
+  "id": "d1cd9694-e8c9-4bfa-a069-9f0a17025916",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -791,13 +791,13 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "varchar(256)",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "varchar(256)",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true
         }
@@ -839,7 +839,7 @@
         },
         "code": {
           "name": "code",
-          "type": "varchar(2)",
+          "type": "varchar(20)",
           "primaryKey": false,
           "notNull": false
         }

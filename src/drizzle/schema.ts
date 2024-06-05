@@ -121,8 +121,8 @@ export const restaurantTable = pgTable("restaurantTable", {
   street_address: varchar("street_address", { length: 256 }),
   zip_code: varchar("zip_code", { length: 10 }),
   city_id: integer("city_id").references(() => cityTable.id),
-  created_at: varchar("created_at", { length: 256 }),
-  updated_at: varchar("updated_at", { length: 256 }).notNull(),
+  created_at: timestamp("created_at"),
+  updated_at: timestamp("updated_at").notNull(),
 });
 
 export const statusCatalogueTable = pgTable("status_catalog", {
@@ -171,23 +171,26 @@ export const categoryMenuRelations = relations(categoryTable, ({ many }) => ({
 
 //3 restaurant
 //one restaurant contains many menu items and orders
-export const restaurantRelations = relations(restaurantTable, ({ many, one }) => ({
-  menuItem: many(menuItemTable),
-  orders: many(ordersTable),
-  city: one(cityTable, {
-    fields: [restaurantTable.city_id],
-    references: [cityTable.id],
-  }),
-  restaurantOwner: one(restaurantOwnerTable, {
-    fields: [restaurantTable.id],
-    references: [restaurantOwnerTable.restaurant_id],
-  }),
-}));
+export const restaurantRelations = relations(
+  restaurantTable,
+  ({ many, one }) => ({
+    menuItem: many(menuItemTable),
+    orders: many(ordersTable),
+    city: one(cityTable, {
+      fields: [restaurantTable.city_id],
+      references: [cityTable.id],
+    }),
+    restaurantOwner: one(restaurantOwnerTable, {
+      fields: [restaurantTable.id],
+      references: [restaurantOwnerTable.restaurant_id],
+    }),
+  })
+);
 
-// A restaurant owner can own many restaurants
+//4 A restaurant owner can own many restaurants
 export const restaurantOwnerRelations = relations(
   restaurantOwnerTable,
-  ({ one }) => ({
+  ({ one, many }) => ({
     user: one(usersTable, {
       fields: [restaurantOwnerTable.owner_id],
       references: [usersTable.id],
@@ -227,6 +230,10 @@ export const addressRelations = relations(addressTable, ({ one, many }) => ({
   city: one(cityTable, {
     fields: [addressTable.city_id],
     references: [cityTable.id],
+  }),
+  user: one(usersTable, {
+    fields: [addressTable.user_id],
+    references: [usersTable.id],
   }),
   orders: many(ordersTable),
 }));
@@ -284,20 +291,6 @@ export const orderStatusRelations = relations(orderStatusTable, ({ one }) => ({
   }),
 }));
 
-
-
-// 14. users
-// A user can have many addresses, orders, comments, and can be a driver or a restaurant owner
-export const userRelations = relations(usersTable, ({ many }) => ({
-  addresses: many(addressTable),
-  orders: many(ordersTable),
-  comments: many(commentTable),
-  drivers: many(driversTable),
-  restaurantOwners: many(restaurantOwnerTable),
-}));
-
-
-
 //11. status_catalogue
 // A status catalogue can have many order statuses
 export const statusCatalogueRelations = relations(
@@ -328,4 +321,14 @@ export const commentRelations = relations(commentTable, ({ one }) => ({
     fields: [commentTable.user_id],
     references: [usersTable.id],
   }),
+}));
+
+// 14. users
+// A user can have many addresses, orders, comments, and can be a driver or a restaurant owner
+export const userRelations = relations(usersTable, ({ many }) => ({
+  addresses: many(addressTable),
+  orders: many(ordersTable),
+  comments: many(commentTable),
+  drivers: many(driversTable),
+  restaurantOwners: many(restaurantOwnerTable),
 }));
