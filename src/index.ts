@@ -1,1 +1,3 @@
-console.log("hello");
+// console.log("hello");
+
+import db from "./drizzle/db";

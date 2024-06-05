@@ -171,9 +171,17 @@ export const categoryMenuRelations = relations(categoryTable, ({ many }) => ({
 
 //3 restaurant
 //one restaurant contains many menu items and orders
-export const restaurantRelations = relations(restaurantTable, ({ many }) => ({
+export const restaurantRelations = relations(restaurantTable, ({ many, one }) => ({
   menuItem: many(menuItemTable),
   orders: many(ordersTable),
+  city: one(cityTable, {
+    fields: [restaurantTable.city_id],
+    references: [cityTable.id],
+  }),
+  restaurantOwner: one(restaurantOwnerTable, {
+    fields: [restaurantTable.id],
+    references: [restaurantOwnerTable.restaurant_id],
+  }),
 }));
 
 // A restaurant owner can own many restaurants
@@ -198,7 +206,7 @@ export const cityRestaurantRelations = relations(
   ({ many, one }) => ({
     restaurants: many(restaurantTable),
     addresses: many(addressTable),
-    
+
     // one city belongs to one state
     state: one(stateTable, {
       fields: [cityTable.state_id],
@@ -275,6 +283,20 @@ export const orderStatusRelations = relations(orderStatusTable, ({ one }) => ({
     references: [statusCatalogueTable.id],
   }),
 }));
+
+
+
+// 14. users
+// A user can have many addresses, orders, comments, and can be a driver or a restaurant owner
+export const userRelations = relations(usersTable, ({ many }) => ({
+  addresses: many(addressTable),
+  orders: many(ordersTable),
+  comments: many(commentTable),
+  drivers: many(driversTable),
+  restaurantOwners: many(restaurantOwnerTable),
+}));
+
+
 
 //11. status_catalogue
 // A status catalogue can have many order statuses
